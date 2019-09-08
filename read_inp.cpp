@@ -32,20 +32,52 @@ void read_inp(char *command[],char *param[],char *arg[],bool &red,bool &pip,bool
     int count=0,i=0,j=0;
     //bool pip,red;
     char  *str,*out_file;
+    char prev;
     while(1)
     {
+       
+       
         char ch;
         ch=getchar();
+        //cerr<<"111";
+
         if(ch=='|')
-        pip=1;
+        {
+            pip=1;
+            prev = ch;
+           // pip_count++;
+        }
         if(ch=='>')
-        red=1;
+        {
+            prev=ch;
+            red=1;
+        }
+        if(prev=='|' && ch ==' ')
+         {
+             prev='\0';
+             continue;
+         }
+        if(prev=='>' && ch ==' ')
+        {
+            prev='\0';
+            continue;
+        }
+         if(prev=='>' && ch =='>')
+        {
+            //prev='>';
+            red=0;
+            rred=1;
+            prev='\0';
+        }
         if(ch=='\n')
         break;
         line[count++]=ch;
         
+
     }
+     prev='\0';
     line[count]='\0';
+
      if(pip==1)
     {
         str=strtok(line,"|");
@@ -64,29 +96,20 @@ void read_inp(char *command[],char *param[],char *arg[],bool &red,bool &pip,bool
         //cout<<str<<endl;
 
     }
+      else if(rred==1)
+    {
+        str=strtok(line,">>");
+        //cout<<str<<endl;
+        parse_str(command,param,arg,str);
+        //cout<<str<<endl;
+        command[1]=strtok(NULL,">>");
+        //cout<<str<<endl;
+
+    }
     else
     {
+        //cout<<line<<endl;
         parse_str(command,param,arg,line);
     }
-//     stringstream ss(line);
-//     string word;
-//     ss>>word;
-//     strcpy(command,word.c_str());
-//     arg[0]=(char *)malloc(word.length()*sizeof(char *));
-//     strcpy(arg[0],word.c_str());
-//     int k=1;
-//     while(ss>>word)
-//     {
-//         param[i]=(char *)malloc(word.length()*sizeof(char *));
-//         strcpy(arr[i++],word.c_str());
-//         arg[k]=(char *)malloc(word.length()*sizeof(char *));
-//         strcpy(arg[k++],word.c_str());
-//     }
-//     //cout<<str<<endl;
-   
-//    // strcpy(cmd,arr[0]);
-      
-//     param[i]=(char *)NULL;
-//     arg[k]=(char *)NULL;
-    //cout<<*par[0]<<endl;
+
 }

@@ -1,7 +1,7 @@
 all: hello
 
-hello: main.o display.o read_inp.o bicmd.o sycmd.o historian.o
-	g++ main.o display.o read_inp.o bicmd.o sycmd.o historian.o -o hell
+hello: main.o display.o read_inp.o bicmd.o sycmd.o historian.o init.o
+	g++ main.o display.o read_inp.o bicmd.o sycmd.o historian.o init.o -o hell
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -14,6 +14,9 @@ read_inp.o: read_inp.cpp
 
 bicmd.o: bicmd.cpp
 	g++ -c bicmd.cpp
+
+init.o: init.cpp
+	g++ -c init.cpp
 
 sycmd.o: sycmd.cpp
 	g++ -c sycmd.cpp

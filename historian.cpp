@@ -9,7 +9,7 @@ void historian(char *arg1[], char *arg2[])
 {
     FILE *fp;
     char* str = (char *)malloc(20);
-    fp=fopen("hist.txt","a");
+    fp=fopen("hist.txt","a+");
     if(fp == NULL)
     cout<<"File Doesnt exist";
     else
@@ -23,12 +23,9 @@ void historian(char *arg1[], char *arg2[])
             strcat(str," ");
        }
        i=0;
-       while(arg2[i]!=(char *)NULL)
-       {
-          char *s=arg2[i++];
-            strcat(str, s);
-            strcat(str," ");
-       }
+       //cerr<<"arg1"<<endl;
+       //cerr<<":"<<endl;
+       //cerr<<"arg2"<<endl;
        //cout<<str<<endl;
        fprintf(fp,"%s\n",str);
        fclose(fp);

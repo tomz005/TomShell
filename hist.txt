@@ -1,109 +1,16 @@
-ls
-cathist.txt
-exit
 ls 
 ls -l 
-ls -l -a 
-cat hist.txt 
+history 
+ls 
+history 
 exit 
 ls 
-exit 
-exit 
-ls 
-àñïléUopen download.png 
-exit 
-ls-l 
-catbed.txt 
-ls 
-catbed.txt 
-exit 
-ls-l 
-ls 
-catbed.txt 
-catb.txt 
-exit 
-cat hist.txt 
-cat bed.txt 
-exit 
-ls -l 
-ls 
-exit 
+history 
 ls 
 ls 
-catcatt.txt 
-exit 
-ls 
-cat xx.txt 
-ls -l 
-cattr.txt 
-cat xx.txt 
-cat tr.txt 
-exit 
-exit 
-ls 
-exit 
-ls -a 
-cat .myrc 
-exit 
-cat .myrc 
-exit 
-cat .myrc 
-exit 
-ls -a 
-cat .myrc 
-exit 
-ls 
-ls -a 
-cat .myrc 
-exit 
-ls 
-catjiv.txt 
-catjiv.txt 
-ls 
-cat catt.txt 
-cat jiv.txt 
-exit 
-ls 
-ls 
-cat jivvy.txt 
-exit 
-ls 
-ps 
-ls 
-cat kar.txt 
-ls 
-catkarna.txt 
-ls 
-exit 
-ls 
-ls-l 
-exit 
-ls 
-ls -l 
-cat tinuton.txt 
+cat timmy.txt 
 clear 
-exit 
-echo tom >> lo.txt 
-exit 
-ps 
-cat dra.txt 
-exit 
-ps 
-cat dra.txt 
-ls -l 
-ls -l 
-cat dra1.txt 
-clear 
-exit 
-history 
-ps 
-exit 
-history 
-exit 
-ls 
-ls -l 
-history 
-ls 
-cat suitup.txt 
-history 
+alarm 2 
+ 
+echo $PATH 
 exit 

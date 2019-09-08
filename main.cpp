@@ -4,13 +4,24 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <signal.h>
+#include <string>
+#include <unordered_map>
 #include "functions.h"
 using namespace std;
+
+void  ALARMhandler(int sig)
+{
+  signal(SIGALRM, SIG_IGN);        
+  printf("!!!!!!!!!!!!!!!!Ting Ting : Alarm trigerred!!!!!!!!!!!!!!!!!!!!\n");
+  signal(SIGALRM, ALARMhandler);     
+}
 
 int main()
 {
     //Initialization
     std::unordered_map<string,string> my;
+    std::unordered_map<string, string>::iterator it;
     char *command[100];
     char *param[20];
     char *arg[20];
@@ -19,8 +30,10 @@ int main()
     char *arg2[20];
     int status;
    bool pip=0,red=0,rred=0;
-   int pip_count=0;
+   //int pip_count=0;
     //Loop
+    init(my);
+
 
     while(1)
     {
@@ -30,15 +43,48 @@ int main()
         display();
         //cout<<*param<<endl;
         read_inp(command,param,arg,red,pip,rred,command2,param2,arg2);
+        //cout<<*arg<<endl;
         historian(arg,arg2);
+        //cerr<<"history done";
+        //comment starts
         if(strcmp(arg[0],"exit")==0)
         {
             break;
         }
-        //cout<<*param<<endl;
+        // //cout<<*param<<endl;
+        if(strcmp(arg[0],"alarm")==0)
+        {
+            stringstream tym(arg[1]);
+            int x=0;
+            tym>>x;
+            //cout<<x<<endl;
+            signal(SIGALRM, ALARMhandler);
+            alarm(x);
+            continue;
+        }
+          if(strcmp(arg[0],"echo")==0)
+        {
+            //cout<<arg[1]<<endl;
+            //cout<<arg[1][0]<<endl;
+            if(arg[1][0]=='$')
+            {
+                //cout<<"$ confirmed";
+            string par=arg[1];
+            string cross=par.substr(1);
+            it=my.find(cross);
+            if(it!=my.end())
+            {
+                cout<<it->second<<endl;
+                continue;
+            
+            }
+            }
+
+        }
         if(strcmp(arg[0],"cd")==0)
         {
            bicmd(arg[0],param);
+           continue;
         }
         if(strcmp(arg[0],"history")==0)
         {
@@ -117,6 +163,10 @@ int main()
         else
         {
             //cout<<arg[0]<<endl;
+            string s;
+            s=arg[0];
+             if(s.empty())
+            continue;
             sycmd(arg[0],arg);
         }
 
