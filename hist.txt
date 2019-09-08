@@ -14,3 +14,14 @@ alarm 2
  
 echo $PATH 
 exit 
+alias ll = "ls -l" 
+alias ll="ls-l" 
+exit 
+alias ll="ls -l" 
+exit 
+alias ll="ls -l" 
+ 
+exit 
+alias ll="ls -l" 
+alias ll="ls" 
+alias ll="ls" 

@@ -52,6 +52,12 @@ int main()
             break;
         }
         // //cout<<*param<<endl;
+        if(strcmp(arg[0],"alias")==0)
+        {
+            //  char *key=arg[1];
+            //  cout<<key<<endl;
+            continue;
+        }
         if(strcmp(arg[0],"alarm")==0)
         {
             stringstream tym(arg[1]);
