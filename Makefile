@@ -1,7 +1,7 @@
 all: hello
 
-hello: main.o display.o read_inp.o bicmd.o sycmd.o
-	g++ main.o display.o read_inp.o bicmd.o sycmd.o -o hell
+hello: main.o display.o read_inp.o bicmd.o sycmd.o historian.o
+	g++ main.o display.o read_inp.o bicmd.o sycmd.o historian.o -o hell
 
 main.o: main.cpp
 	g++ -c main.cpp
@@ -17,6 +17,8 @@ bicmd.o: bicmd.cpp
 
 sycmd.o: sycmd.cpp
 	g++ -c sycmd.cpp
+historian.o: historian.cpp
+	g++ -c historian.cpp
 
 clean:
 	rm -rf *o hell

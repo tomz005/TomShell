@@ -26,7 +26,7 @@ void parse_str(char *command[],char *param[],char *arg[],char line[])
     param[i]=(char *)NULL;
     arg[k]=(char *)NULL;
 }
-void read_inp(char *command[],char *param[],char *arg[],bool &red,bool &pip,char *command2[],char *param2[],char *arg2[])
+void read_inp(char *command[],char *param[],char *arg[],bool &red,bool &pip,bool &rred,char *command2[],char *param2[],char *arg2[])
 {
     char line[1024];
     int count=0,i=0,j=0;

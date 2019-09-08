@@ -10,6 +10,7 @@ using namespace std;
 int main()
 {
     //Initialization
+    std::unordered_map<string,string> my;
     char *command[100];
     char *param[20];
     char *arg[20];
@@ -17,7 +18,7 @@ int main()
     char *param2[20];
     char *arg2[20];
     int status;
-   bool pip=0,red=0;
+   bool pip=0,red=0,rred=0;
    int pip_count=0;
     //Loop
 
@@ -25,11 +26,11 @@ int main()
     {
         red=0;
         pip=0;
+        rred=0;
         display();
         //cout<<*param<<endl;
-        read_inp(command,param,arg,red,pip,command2,param2,arg2);
-       // cout<<*param<<endl;
-        //if command is exit -> break the loop
+        read_inp(command,param,arg,red,pip,rred,command2,param2,arg2);
+        historian(arg,arg2);
         if(strcmp(arg[0],"exit")==0)
         {
             break;
@@ -38,14 +39,16 @@ int main()
         if(strcmp(arg[0],"cd")==0)
         {
            bicmd(arg[0],param);
-           //cout<<param[0]<<endl;
-        //    if(chdir((const char *)param)<0)
-        // {
-        //     perror("cd");
-        //     cout<<"error"<<endl;
-        // }
-        // if(chdir((const char *)param[0])>0)
-        // cout<<"Changed";
+        }
+        if(strcmp(arg[0],"history")==0)
+        {
+           //Display history file
+           char *arg3[20];
+           arg3[0]="cat";
+           arg3[1]="hist.txt";
+           arg3[2]=NULL;
+           sycmd(arg3[0],arg3);
+           continue;
         }
         if(pip)
         {
@@ -99,6 +102,17 @@ int main()
             dup2(fd,1);
             sycmd(arg[0],arg);
             dup2(saved,1);
+        }
+        else if(rred)
+        {
+            int saved=dup(1);
+            int fd = open(command[1], O_WRONLY|O_APPEND|O_CREAT, 0644);
+            close(1);
+            dup2(fd,1);
+            sycmd(arg[0],arg);
+            dup2(saved,1);
+            //cout<<"Double redirection"<<endl;
+            //cout<<arg[0]<<" : ";
         }
         else
         {
