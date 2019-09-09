@@ -25,3 +25,9 @@ exit
 alias ll="ls -l" 
 alias ll="ls" 
 alias ll="ls" 
+ls 
+echo $PATH 
+echo $USER 
+echo tom 
+history 
+exit 
